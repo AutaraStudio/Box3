@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Proposal | BOX3 Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0f0f0f;
+            --grey-900: #1a1a1a;
+            --grey-800: #262626;
+            --grey-700: #404040;
+            --grey-600: #525252;
+            --grey-500: #737373;
+            --grey-400: #a3a3a3;
+            --grey-300: #d4d4d4;
+            --grey-200: #e5e5e5;
+            --grey-100: #f5f5f5;
+            --grey-50: #fafafa;
+            --white: #ffffff;
+            
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: var(--grey-100);
+            color: var(--grey-700);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Cover */
+        .cover {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 40%);
+        }
+
+        .cover-content {
+            position: relative;
+            max-width: 700px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: var(--grey-800);
+            border: 1px solid var(--grey-700);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--grey-300);
+        }
+
+        .cover h1 {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .cover-subtitle {
+            font-size: 1.1rem;
+            color: var(--grey-400);
+            margin-bottom: 3rem;
+        }
+
+        .cover-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--grey-800);
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .meta-value a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--white);
+            margin: -3rem auto 3rem;
+            max-width: 900px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: 2.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .toc h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            background: var(--grey-100);
+        }
+
+        .toc-num {
+            width: 24px;
+            height: 24px;
+            background: var(--grey-100);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--grey-600);
+            flex-shrink: 0;
+        }
+
+        .toc-item:hover .toc-num {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .toc-text {
+            font-size: 0.85rem;
+            color: var(--grey-600);
+        }
+
+        /* Section */
+        .section {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-num {
+            width: 36px;
+            height: 36px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.02em;
+        }
+
+        .section p {
+            color: var(--grey-600);
+            margin-bottom: 1rem;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box p {
+            font-size: 0.9rem;
+            color: var(--grey-600);
+            margin: 0;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--grey-900) 0%, var(--black) 100%);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .highlight-box p, .highlight-box li {
+            font-size: 0.9rem;
+            color: var(--grey-300);
+            margin: 0;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            margin-top: 0.75rem;
+        }
+
+        .highlight-box li {
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .highlight-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--grey-500);
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: var(--grey-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .card h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--grey-600);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Challenges & Objectives */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .col-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .col-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-500);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .item {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .item:first-of-type {
+            padding-top: 0;
+        }
+
+        .item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.2rem;
+        }
+
+        .item p {
+            font-size: 0.85rem;
+            color: var(--grey-500);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .objective {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .objective-num {
+            width: 22px;
+            height: 22px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Phase */
+        .phase {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 1rem;
+            transition: all 0.25s ease;
+        }
+
+        .phase:hover {
+            border-color: var(--grey-300);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .phase:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .phase-num {
+            width: 44px;
+            height: 44px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .phase-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.2rem;
+        }
+
+        .phase-subtitle {
+            font-size: 0.85rem;
+            color: var(--grey-500);
+        }
+
+        .deliverables {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.6rem;
+        }
+
+        .deliverable {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.65rem 0.85rem;
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            color: var(--grey-600);
+            transition: all 0.2s ease;
+        }
+
+        .deliverable:hover {
+            border-color: var(--grey-300);
+            background: var(--white);
+        }
+
+        .deliverable-check {
+            width: 16px;
+            height: 16px;
+            background: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .deliverable-check svg {
+            width: 9px;
+            height: 9px;
+            stroke: var(--white);
+            stroke-width: 3;
+        }
+
+        .deliverable strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--grey-300);
+            background: var(--white);
+        }
+
+        .timeline-item.highlight {
+            background: var(--black);
+            border-color: var(--black);
+        }
+
+        .timeline-phase {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .timeline-item.highlight .timeline-phase {
+            color: var(--white);
+        }
+
+        .timeline-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--grey-500);
+        }
+
+        .timeline-item.highlight .timeline-date {
+            color: var(--grey-400);
+        }
+
+        .timeline-badge {
+            background: var(--grey-200);
+            padding: 0.3rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--grey-600);
+        }
+
+        .timeline-item.highlight .timeline-badge {
+            background: var(--grey-800);
+            color: var(--white);
+        }
+
+        /* Investment */
+        .investment-section {
+            background: var(--black);
+            color: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .investment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .investment-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .investment-header p {
+            color: var(--grey-400);
+            font-size: 0.9rem;
+        }
+
+        .investment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .investment-table th,
+        .investment-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+        }
+
+        .investment-table th {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-500);
+            border-bottom: 1px solid var(--grey-800);
+        }
+
+        .investment-table td {
+            border-bottom: 1px solid var(--grey-800);
+        }
+
+        .investment-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .investment-table .phase-name {
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .investment-table .phase-desc {
+            font-size: 0.8rem;
+            color: var(--grey-500);
+            line-height: 1.5;
+        }
+
+        .investment-table .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-align: right;
+        }
+
+        .total-row {
+            background: var(--grey-900);
+            border-radius: var(--radius-md);
+        }
+
+        .total-row td {
+            padding: 1.25rem;
+        }
+
+        .total-row .price {
+            font-size: 1.75rem;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .payment-card {
+            background: var(--grey-900);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .payment-percent {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .payment-amount {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--grey-300);
+            margin: 0.35rem 0;
+        }
+
+        .payment-milestone {
+            font-size: 0.8rem;
+            color: var(--grey-500);
+        }
+
+        /* Yearly Costs */
+        .costs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .costs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cost-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .cost-card h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .cost-desc {
+            font-size: 0.8rem;
+            color: var(--grey-500);
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-500);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.45rem 0;
+            font-size: 0.85rem;
+            color: var(--grey-600);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--black);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Inspiration */
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .inspiration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inspiration-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .inspiration-card:hover {
+            border-color: var(--grey-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .inspiration-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 1.25rem;
+        }
+
+        .inspiration-header h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+        }
+
+        .inspiration-url {
+            font-size: 0.75rem;
+            color: var(--grey-400);
+        }
+
+        .inspiration-body {
+            padding: 1.25rem;
+        }
+
+        .inspiration-body p {
+            font-size: 0.85rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .inspiration-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--grey-200);
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--grey-600);
+        }
+
+        .inspiration-link {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .inspiration-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Add-ons */
+        .addon-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin: 1.5rem 0;
+        }
+
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .addon-item:hover {
+            border-color: var(--grey-300);
+            background: var(--white);
+            transform: translateX(4px);
+        }
+
+        .addon-name {
+            font-weight: 500;
+            color: var(--grey-700);
+        }
+
+        .addon-price {
+            font-weight: 700;
+            color: var(--black);
+            background: var(--grey-200);
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        /* Terms */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .term-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .term-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .term-card p, .term-card li {
+            font-size: 0.82rem;
+            color: var(--grey-500);
+            line-height: 1.6;
+        }
+
+        .term-card ul {
+            list-style: none;
+        }
+
+        .term-card li {
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .term-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--grey-400);
+        }
+
+        /* Steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 800px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-card {
+            background: var(--grey-50);
+            border: 1px solid var(--grey-200);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .step-card:hover {
+            border-color: var(--grey-300);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 0.75rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            font-size: 0.82rem;
+            color: var(--grey-500);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+
+        .footer-message {
+            font-size: 1.1rem;
+            color: var(--grey-400);
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .footer-divider {
+            width: 50px;
+            height: 2px;
+            background: var(--grey-800);
+            margin: 0 auto 2rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: var(--grey-900);
+            border: 1px solid var(--grey-800);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            min-width: 160px;
+        }
+
+        .contact-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-600);
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-value {
+            font-weight: 600;
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-brand {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--grey-800);
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-link {
+            font-size: 0.8rem;
+            color: var(--grey-500);
+        }
+
+        .footer-link a {
+            color: var(--grey-400);
+            text-decoration: none;
+        }
+
+        /* Note */
+        .note {
+            background: var(--grey-50);
+            border-left: 3px solid var(--grey-300);
+            padding: 0.85rem 1rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.82rem;
+            color: var(--grey-500);
+            margin-top: 1rem;
+        }
+
+        .note strong {
+            color: var(--grey-700);
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover -->
+    <div class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Website Proposal</div>
+            <h1>Full Rebrand & Digital Transformation</h1>
+            <p class="cover-subtitle">Premium Web Solutions for Commercial Excellence</p>
+            <div class="cover-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Prepared for</div>
+                    <div class="meta-value">BOX3 Projects</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Prepared by</div>
+                    <div class="meta-value">Matthew Turner</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Website</div>
+                    <div class="meta-value"><a href="https://matt-codes.webflow.io">matt-codes.webflow.io</a></div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Date</div>
+                    <div class="meta-value">November 2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="container">
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="toc-num">01</span><span class="toc-text">Executive Summary</span></div>
+                <div class="toc-item"><span class="toc-num">02</span><span class="toc-text">Understanding Your Needs</span></div>
+                <div class="toc-item"><span class="toc-num">03</span><span class="toc-text">Scope of Work</span></div>
+                <div class="toc-item"><span class="toc-num">04</span><span class="toc-text">Design Inspiration</span></div>
+                <div class="toc-item"><span class="toc-num">05</span><span class="toc-text">Project Timeline</span></div>
+                <div class="toc-item"><span class="toc-num">06</span><span class="toc-text">Investment</span></div>
+                <div class="toc-item"><span class="toc-num">07</span><span class="toc-text">Yearly Costs</span></div>
+                <div class="toc-item"><span class="toc-num">08</span><span class="toc-text">What's Included</span></div>
+                <div class="toc-item"><span class="toc-num">09</span><span class="toc-text">Optional Add-Ons</span></div>
+                <div class="toc-item"><span class="toc-num">10</span><span class="toc-text">Terms & Conditions</span></div>
+                <div class="toc-item"><span class="toc-num">11</span><span class="toc-text">Next Steps</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">01</div>
+                <h2 class="section-title">Executive Summary</h2>
+            </div>
+            <p>BOX3 Projects has established itself as a leading commercial fit-out specialist in London, delivering exceptional workspaces for prestigious clients including Meta, Hugo Boss, Warner Music Group, and Unison. With 180+ years of combined industry expertise and a remarkable 90% repeat business rate, your company's reputation speaks volumes about the quality of work delivered.</p>
+            <p>However, your current digital presence does not reflect the calibre of your work. This proposal outlines a comprehensive rebrand and website development project designed to position BOX3 Projects as the premium choice for commercial fit-outs in the London market.</p>
+            
+            <div class="info-box">
+                <h4>Vision</h4>
+                <p>Create a digital presence that matches the quality and attention to detail BOX3 brings to every project, establishing trust with high-value commercial clients from the first interaction.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Three Integrated Phases</h4>
+                <ul>
+                    <li><strong>Brand Guidelines</strong> — Foundation for all communications</li>
+                    <li><strong>Figma Design Mockups</strong> — High-fidelity prototypes for review</li>
+                    <li><strong>Website Development</strong> — Custom-built Webflow site with CMS</li>
+                </ul>
+                <p style="margin-top: 0.75rem;">Target launch: <strong>Mid-March 2026</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Understanding Your Needs -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">02</div>
+                <h2 class="section-title">Understanding Your Needs</h2>
+            </div>
+            <p>We've identified key challenges and objectives to guide this transformation.</p>
+
+            <div class="two-col">
+                <div class="col-card">
+                    <div class="col-title">Current Challenges</div>
+                    <div class="item">
+                        <h4>Visual Identity</h4>
+                        <p>Current branding lacks the sophistication expected from a contractor delivering £10M projects for Fortune 500 clients</p>
+                    </div>
+                    <div class="item">
+                        <h4>Digital Experience</h4>
+                        <p>Website doesn't effectively showcase your portfolio or communicate your unique value proposition</p>
+                    </div>
+                    <div class="item">
+                        <h4>Brand Consistency</h4>
+                        <p>Disconnect between premium service delivery and visual presentation</p>
+                    </div>
+                    <div class="item">
+                        <h4>Lead Generation</h4>
+                        <p>Current site lacks clear calls-to-action and conversion pathways</p>
+                    </div>
+                </div>
+                <div class="col-card">
+                    <div class="col-title">Project Objectives</div>
+                    <div class="item">
+                        <div class="objective">
+                            <span class="objective-num">1</span>
+                            <p>Create a cohesive brand identity reflecting BOX3's position as a premium fit-out contractor</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="objective">
+                            <span class="objective-num">2</span>
+                            <p>Develop a modern, high-performance website that showcases your portfolio effectively</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="objective">
+                            <span class="objective-num">3</span>
+                            <p>Establish clear brand guidelines ensuring consistency across all touchpoints</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="objective">
+                            <span class="objective-num">4</span>
+                            <p>Improve lead generation and enquiry conversion through strategic UX design</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="objective">
+                            <span class="objective-num">5</span>
+                            <p>Position BOX3 competitively while highlighting your personalised approach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scope of Work -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">03</div>
+                <h2 class="section-title">Scope of Work</h2>
+            </div>
+            <p>A three-phase approach to transform your digital presence.</p>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-num">01</div>
+                    <div>
+                        <h3 class="phase-title">Brand Guidelines</h3>
+                        <p class="phase-subtitle">Comprehensive brand guidelines document serving as the foundation for all communications</p>
+                    </div>
+                </div>
+                <div class="deliverables">
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Logo System</strong> — Refined primary logo, secondary marks, favicon, usage rules</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Colour Palette</strong> — Primary, secondary & accent colours with HEX, RGB, CMYK</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Typography</strong> — Heading & body font selections with hierarchy guidelines</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Photography Style</strong> — Art direction for project photography & portraits</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Graphic Elements</strong> — Patterns, icons & supporting visual elements</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Voice & Tone</strong> — Messaging framework & copywriting guidelines</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Application Examples</strong> — Business cards, email signatures, templates</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-num">02</div>
+                    <div>
+                        <h3 class="phase-title">Figma Design Mockups</h3>
+                        <p class="phase-subtitle">High-fidelity interactive prototypes for collaborative review before development</p>
+                    </div>
+                </div>
+                <div class="deliverables">
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Homepage</strong> — Hero, services overview, featured projects, testimonials & CTAs</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>About Page</strong> — Company story, team profiles, values & 'Why BOX3'</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Services Pages</strong> — Cat A, Cat B, Design & Build, Dilapidations, Hybrid</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Portfolio</strong> — Filterable project gallery with case study template</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Contact Page</strong> — Enquiry form, office location & direct contact</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Responsive Designs</strong> — Desktop, tablet & mobile breakpoints</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Component Library</strong> — Reusable UI elements for scalability</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Interactive Prototype</strong> — Clickable prototype for review</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-num">03</div>
+                    <div>
+                        <h3 class="phase-title">Website Development</h3>
+                        <p class="phase-subtitle">Fully custom Webflow website optimised for performance, SEO and content management</p>
+                    </div>
+                </div>
+                <div class="deliverables">
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Webflow Build</strong> — Custom development with animations & interactions</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>CMS Integration</strong> — Full CMS setup for easy content updates</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Portfolio System</strong> — Dynamic case studies with filtering</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Contact Integration</strong> — Forms with email notifications</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>SEO Optimisation</strong> — Technical SEO, metadata & structured data</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Performance</strong> — Optimised for speed and Core Web Vitals</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Analytics</strong> — GA4 & conversion tracking setup</span>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                        <span><strong>Training</strong> — CMS training session (up to 2 hours)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Inspiration -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">04</div>
+                <h2 class="section-title">Website Design Inspiration</h2>
+            </div>
+            <p>Below are carefully curated examples of modern construction and design websites that showcase exceptional user experience, visual storytelling, and contemporary web development practices. Each offers valuable inspiration that can be adapted to create something uniquely tailored for BOX3 Projects.</p>
+
+            <div class="info-box">
+                <h4>What We're Looking For</h4>
+                <p>These examples highlight excellence in visual hierarchy, project showcases, clean navigation, animation strategies, and professional tone. We'll cherry-pick the best elements and reimagine them specifically for your brand and audience.</p>
+            </div>
+
+            <div class="inspiration-grid">
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>OH Architecture</h5>
+                        <div class="inspiration-url">oharchitecture.com.au</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Australian architecture firm with stunning full-bleed imagery, elegant typography, and seamless project transitions. Excellent example of letting high-quality work speak for itself.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Full-bleed Images</span>
+                            <span class="tag">Elegant Typography</span>
+                            <span class="tag">Minimal</span>
+                        </div>
+                        <a href="https://www.oharchitecture.com.au/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>111 West 57th</h5>
+                        <div class="inspiration-url">111w57.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Luxury residential development with cinematic storytelling, immersive scroll experiences, and sophisticated animations. Sets the bar for premium real estate presentation.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Cinematic</span>
+                            <span class="tag">Scroll Effects</span>
+                            <span class="tag">Luxury</span>
+                        </div>
+                        <a href="https://111w57.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>HG Construction</h5>
+                        <div class="inspiration-url">hgconstruction.co.uk</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>UK construction company with clean layouts, strong project showcases, and professional B2B positioning. Great reference for balancing technical credibility with visual appeal.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">UK Market</span>
+                            <span class="tag">B2B Focus</span>
+                            <span class="tag">Professional</span>
+                        </div>
+                        <a href="https://www.hgconstruction.co.uk/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>DTRE</h5>
+                        <div class="inspiration-url">dtre.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Commercial real estate advisory with refined aesthetics, intuitive navigation, and polished micro-interactions. Demonstrates how to present complex services with clarity.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Refined</span>
+                            <span class="tag">Micro-interactions</span>
+                            <span class="tag">Commercial</span>
+                        </div>
+                        <a href="https://dtre.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>Radga</h5>
+                        <div class="inspiration-url">radga.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Design studio showcasing bold creative direction, innovative layouts, and striking visual compositions. Perfect inspiration for standing out in a competitive market.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Bold Design</span>
+                            <span class="tag">Creative</span>
+                            <span class="tag">Innovative</span>
+                        </div>
+                        <a href="https://radga.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>DHK Architects</h5>
+                        <div class="inspiration-url">dhk.co.za</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>South African architecture practice with sophisticated project grids, elegant hover states, and refined typography. Balances minimalism with comprehensive content.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Project Grids</span>
+                            <span class="tag">Hover Effects</span>
+                            <span class="tag">Sophisticated</span>
+                        </div>
+                        <a href="https://www.dhk.co.za/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>SID Thailand</h5>
+                        <div class="inspiration-url">sidthailand.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Interior design firm with immersive visual storytelling, smooth page transitions, and atmospheric photography. Shows how to create emotional connections through design.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Immersive</span>
+                            <span class="tag">Transitions</span>
+                            <span class="tag">Atmospheric</span>
+                        </div>
+                        <a href="https://sidthailand.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>Michel Beaulieu</h5>
+                        <div class="inspiration-url">michelbeaulieu.ca</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Canadian contractor with sophisticated typography, strategic white space, and modern grid layouts. Demonstrates how simplicity creates impact without sacrificing information.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Typography</span>
+                            <span class="tag">White Space</span>
+                            <span class="tag">Grid Layout</span>
+                        </div>
+                        <a href="https://michelbeaulieu.ca/en/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>Storey Project</h5>
+                        <div class="inspiration-url">storeyproject.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Construction company with dynamic project presentations, engaging scroll animations, and strong brand identity. Excellent example of contemporary construction web design.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Dynamic</span>
+                            <span class="tag">Animations</span>
+                            <span class="tag">Brand Identity</span>
+                        </div>
+                        <a href="https://www.storeyproject.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="inspiration-card">
+                    <div class="inspiration-header">
+                        <h5>Basha-Franklin</h5>
+                        <div class="inspiration-url">basha-franklin.com</div>
+                    </div>
+                    <div class="inspiration-body">
+                        <p>Architecture studio featuring elegant cursor interactions, refined hover states, and thoughtful content reveals. Perfect inspiration for adding polish and sophistication.</p>
+                        <div class="inspiration-tags">
+                            <span class="tag">Interactions</span>
+                            <span class="tag">Elegant</span>
+                            <span class="tag">Polish</span>
+                        </div>
+                        <a href="https://www.basha-franklin.com/" target="_blank" class="inspiration-link">Visit Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                <h4>Our Approach</h4>
+                <p>These examples provide a foundation, but your website will be distinctly BOX3 — reflecting your unique brand values, project excellence, and commitment to craftsmanship. We'll blend the best contemporary practices with your specific needs to create something memorable and effective.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">05</div>
+                <h2 class="section-title">Project Timeline</h2>
+            </div>
+            <p>Target launch: Mid-March 2026</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-phase">Discovery & Kickoff</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Dec 2–6, 2025</span>
+                        <span class="timeline-badge">Week 1</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">Brand Guidelines</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Dec 9–27, 2025</span>
+                        <span class="timeline-badge">Weeks 2–4</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">Figma Mockups</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Jan 6–31, 2026</span>
+                        <span class="timeline-badge">Weeks 5–8</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">Development</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Feb 3–28, 2026</span>
+                        <span class="timeline-badge">Weeks 9–13</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">Testing & QA</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Mar 3–7, 2026</span>
+                        <span class="timeline-badge">Week 14</span>
+                    </div>
+                </div>
+                <div class="timeline-item highlight">
+                    <span class="timeline-phase">Launch</span>
+                    <div class="timeline-right">
+                        <span class="timeline-date">Mar 10–14, 2026</span>
+                        <span class="timeline-badge">Week 15</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> Timeline assumes prompt feedback and content provision. Holiday periods (Christmas/New Year) have been factored into the schedule.
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment -->
+    <div class="container">
+        <div class="investment-section">
+            <div class="investment-header">
+                <h2>Investment</h2>
+                <p>Transparent pricing for each project phase</p>
+            </div>
+
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>Deliverable</th>
+                        <th style="text-align: right;">Investment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="phase-name">Phase 1: Brand Guidelines</div>
+                            <div class="phase-desc">Logo refinement, colour palette, typography, photography style, graphic elements, voice & tone, application examples</div>
+                        </td>
+                        <td class="price">£3,500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="phase-name">Phase 2: Figma Design Mockups</div>
+                            <div class="phase-desc">Homepage, About, Services, Portfolio, Case Study template, Contact, responsive designs, component library, interactive prototype</div>
+                        </td>
+                        <td class="price">£4,500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="phase-name">Phase 3: Website Development</div>
+                            <div class="phase-desc">Webflow build, CMS integration, portfolio system, contact forms, SEO, performance optimisation, analytics, training session</div>
+                        </td>
+                        <td class="price">£7,500</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total-row" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem;">
+                <span style="font-weight: 600;">Total Investment</span>
+                <span class="price">£15,500</span>
+            </div>
+
+            <h3 style="text-align: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey-500); margin: 2rem 0 1rem;">Payment Schedule</h3>
+
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="payment-percent">40%</div>
+                    <div class="payment-amount">£6,200</div>
+                    <div class="payment-milestone">Project Commencement</div>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-percent">30%</div>
+                    <div class="payment-amount">£4,650</div>
+                    <div class="payment-milestone">Design Approval</div>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-percent">30%</div>
+                    <div class="payment-amount">£4,650</div>
+                    <div class="payment-milestone">Website Launch</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.8rem; color: var(--grey-500); margin-top: 1.5rem;">All prices exclude VAT. Domain registration and premium stock photography are not included.</p>
+        </div>
+    </div>
+
+    <!-- Yearly Costs -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">07</div>
+                <h2 class="section-title">Yearly Costs & Hosting</h2>
+            </div>
+            <p>The website will be built with Webflow, a powerful visual development platform that allows for easy content management and updates. Below are the ongoing costs you can expect after launch.</p>
+
+            <div class="costs-grid">
+                <div class="cost-card">
+                    <h5>Webflow CMS Hosting</h5>
+                    <div class="cost-amount">~$220 USD/year</div>
+                    <div class="cost-desc">Approx. £175/year · Supports dynamic CMS functionality</div>
+                </div>
+                <div class="cost-card">
+                    <h5>Domain Name</h5>
+                    <div class="cost-amount">£10–£20/year</div>
+                    <div class="cost-desc">Via your preferred registrar</div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Important:</strong> These are recurring yearly costs managed directly by BOX3 Projects and are not included in the project fee. Hosting will be billed directly through Webflow to your account.
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">08</div>
+                <h2 class="section-title">What's Included</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>Throughout the Project</h4>
+                    <ul class="feature-list">
+                        <li>Dedicated project manager as your single point of contact</li>
+                        <li>Weekly progress updates and milestone reviews</li>
+                        <li>Up to 2 rounds of revisions per phase</li>
+                        <li>All source files (Figma, brand assets)</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>Post-Launch Support</h4>
+                    <ul class="feature-list">
+                        <li>30-day bug-fix warranty</li>
+                        <li>CMS training session (up to 2 hours)</li>
+                        <li>Documentation for content management</li>
+                        <li>Handover of all credentials and assets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add-Ons -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">09</div>
+                <h2 class="section-title">Optional Add-Ons</h2>
+            </div>
+            <p>Enhance your project with these additional services.</p>
+
+            <div class="addon-grid">
+                <div class="addon-item">
+                    <span class="addon-name">Ongoing maintenance & support (annual)</span>
+                    <span class="addon-price">£1,200/year</span>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-name">SEO content strategy & initial blog setup</span>
+                    <span class="addon-price">£1,500</span>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-name">Professional photography coordination</span>
+                    <span class="addon-price">POA</span>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-name">Capability statement redesign (print-ready)</span>
+                    <span class="addon-price">£800</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">10</div>
+                <h2 class="section-title">Terms & Conditions</h2>
+            </div>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>Project Scope</h4>
+                    <p>This proposal covers the deliverables explicitly listed. Additional requirements identified during the project will be quoted separately and require written approval.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Client Responsibilities</h4>
+                    <ul>
+                        <li>Timely provision of content, images, and feedback</li>
+                        <li>Designation of a single point of contact</li>
+                        <li>Review and approval within 5 business days</li>
+                        <li>Access to necessary accounts as required</li>
+                    </ul>
+                </div>
+                <div class="term-card">
+                    <h4>Intellectual Property</h4>
+                    <p>Upon final payment, all custom work transfers to BOX3 Projects. We retain the right to showcase the completed work in our portfolio.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Confidentiality</h4>
+                    <p>All information shared during this project will be treated as confidential and will not be disclosed to third parties without written consent.</p>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Validity:</strong> This proposal is valid for 30 days from the date of issue. Pricing and availability may change after this period.
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-num">11</div>
+                <h2 class="section-title">Next Steps</h2>
+            </div>
+            <p>We're excited about the opportunity to partner with BOX3 Projects.</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <div class="step-title">Review</div>
+                    <div class="step-desc">Let us know if you have any questions about this proposal</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <div class="step-title">Approval</div>
+                    <div class="step-desc">Sign and return to confirm the engagement</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <div class="step-title">Deposit</div>
+                    <div class="step-desc">Submit the 40% deposit to secure your slot</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <div class="step-title">Kickoff</div>
+                    <div class="step-desc">We'll schedule a discovery session to begin</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 1.5rem;">
+                <h4>Ready to elevate your digital presence?</h4>
+                <p>Let's create a website that matches the quality and professionalism BOX3 brings to every project.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p class="footer-message">We look forward to helping BOX3 Projects establish a digital presence that truly reflects the exceptional quality of your work.</p>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value"><a href="tel:+353879153664">+353 87 915 3664</a></div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-label">Email</div>
+                <div class="contact-value"><a href="mailto:Matt@matt-codes.com">Matt@matt-codes.com</a></div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-label">Website</div>
+                <div class="contact-value"><a href="https://matt-codes.webflow.io" target="_blank">matt-codes.webflow.io</a></div>
+            </div>
+        </div>
+
+        <div class="footer-brand">
+            <div class="footer-logo">Matt Codes</div>
+            <div class="footer-link"><a href="https://matt-codes.webflow.io" target="_blank">matt-codes.webflow.io</a> · Matthew Turner</div>
+        </div>
+    </div>
+</body>
+</html>
